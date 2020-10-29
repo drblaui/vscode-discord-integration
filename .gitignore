@@ -1,3 +1,8 @@
 node_modules
 .vscode-test/
 *.vsix
+.vscodeignore
+test/
+jsconfig.json
+.eslintrc.json
+.vscode/
