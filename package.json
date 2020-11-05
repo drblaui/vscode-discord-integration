@@ -1,7 +1,7 @@
 {
     "name": "discord-rich-presence-integration",
     "displayName": "Discord Rich Presence Integration",
-    "description": "Allows other people on discord to see what you're currently working on",
+    "description": "Allows other people on discord to see what you're currently working on (Applied after restart)",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.50.0"
@@ -14,7 +14,17 @@
     ],
     "main": "./extension.js",
     "contributes": {
-        "commands": []
+        "configuration": {
+            "title": "Discord Rich Presence",
+            "properties": {
+                "discord-rich-presence-integration.startWithVSCode": {
+                    "description": "Show Rich Presence on Startup",
+                    "type": "boolean",
+                    "default": true,
+                    "scope": "application"
+                }
+            }
+        }
     },
     "scripts": {
         "lint": "eslint .",

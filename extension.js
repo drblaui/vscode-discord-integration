@@ -1,14 +1,18 @@
 const vscode = require('vscode');
 const client = require('discord-rich-presence')('771147594092249088');
 
+
 /**
  * @param {vscode.ExtensionContext} context
  */
 
-//TODO: set images
+
+
 function activate(context) {
     var start = Date.now();
-
+    if (!vscode.workspace.getConfiguration("discord-rich-presence-integration").startWithVSCode) {
+        return;
+    }
     if (!vscode.window.activeTextEditor) {
         var currState;
         if (!vscode.workspace.name) {
@@ -38,10 +42,8 @@ function activate(context) {
     });
 
     vscode.workspace.onDidCloseTextDocument(() => {
-        console.log("Closed Doc");
 
         if (!vscode.window.activeTextEditor) {
-            console.log("Document is null!");
             var currState;
             if (!vscode.workspace.name) {
                 currState = "Idling"
@@ -68,14 +70,35 @@ function updatepres(document, start) {
     }
     var currDetail = "Editing " + filename;
     var currState = "Language: " + language;
+    var imagePath;
+    switch (document.languageId) {
+        case "javascript":
+        case "c":
+        case "cpp":
+        case "csharp":
+        case "java":
+        case "php":
+        case "python":
+        case "ruby":
+        case "sql":
+        case "swift":
+            imagePath = document.languageId + "_logo";
+            break;
+        default:
+            imagePath = "vscode_logo";
+            break;
+    }
     client.updatePresence({
         state: currState,
         details: currDetail,
-        startTimestamp: start
+        startTimestamp: start,
+        largeImageKey: imagePath
     });
 }
-// this method is called when your extension is deactivated
-function deactivate() {}
+
+function deactivate() {
+    client.disconnect();
+}
 
 module.exports = {
     activate,

@@ -8,16 +8,8 @@ Simple Discord Rich Presence Integration
 
 ## Extension Settings
 
-//TODO
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+This extension contributes one setting:
+`discord-rich-presence-integration.startWithVSCode`: Allow the Rich Presence Updates to start with your Visual Studio Code
 
 
 ## Release Notes
