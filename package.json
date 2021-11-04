@@ -2,7 +2,9 @@
     "name": "discord-rich-presence-integration",
     "displayName": "Discord Rich Presence Integration",
     "description": "Allows other people on discord to see what you're currently working on (Applied after restart)",
-    "version": "0.0.1",
+    "publisher": "drblau",
+    "version": "0.0.3",
+    "repository": "https://github.com/drblaui/vscode-discord-integration",
     "engines": {
         "vscode": "^1.50.0"
     },
@@ -43,6 +45,7 @@
         "vscode-test": "^1.4.0"
     },
     "dependencies": {
-        "discord-rich-presence": "0.0.8"
+        "discord-rich-presence": "0.0.8",
+        "register-scheme": "0.0.2"
     }
 }
