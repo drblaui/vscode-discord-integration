@@ -2,13 +2,7 @@ const vscode = require('vscode');
 const client = require('discord-rich-presence')('771147594092249088');
 
 
-/**
- * @param {vscode.ExtensionContext} context
- */
-
-
-
-function activate(context) {
+function activate() {
     var start = Date.now();
     if (!vscode.workspace.getConfiguration("discord-rich-presence-integration").startWithVSCode) {
         return;
@@ -57,18 +51,23 @@ function activate(context) {
         }
     });
 }
-exports.activate = activate;
+//exports.activate = activate;
 
 
 function updatepres(document, start) {
+    if(document.fileName.endsWith(".git")) {
+        return;
+    }
     var filename = document.fileName.substring(document.fileName.lastIndexOf('\\') + 1);
     var language = "";
+    console.log(document);
     if (document.languageId == "plaintext" || document.languageId.includes("txt")) {
-        language = "Text";
+        language = "Plaintext";
     } else {
         language = document.languageId.charAt(0).toUpperCase() + document.languageId.slice(1);
     }
-    var currDetail = "Editing " + filename;
+
+    var currDetail = "Editing " + filename.replace(".git", "");
     var currState = "Language: " + language;
     var imagePath;
     switch (document.languageId) {
