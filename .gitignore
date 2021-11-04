@@ -6,3 +6,4 @@ test
 jsconfig.json
 *.eslintrc.json
 .vscode
+ext-token.txt
