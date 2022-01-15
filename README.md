@@ -10,14 +10,3 @@ Simple Discord Rich Presence Integration
 
 This extension contributes one setting:
 `discord-rich-presence-integration.startWithVSCode`: Allow the Rich Presence Updates to start with your Visual Studio Code
-
-
-## Release Notes
-
-Rich Presence Integragtion
-
-### 1.0.0
-
-Initial release
-
------------------------------------------------------------------------------------------------------------
